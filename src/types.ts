@@ -2,6 +2,14 @@
 
 export type Severity = "info" | "watch" | "warning" | "severe";
 
+export const SEVERITY_ORDER: Severity[] = ["info", "watch", "warning", "severe"];
+
+/** Rank a severity for sorting and filtering. */
+export function severityRank(severity: Severity): number {
+  const index = SEVERITY_ORDER.indexOf(severity);
+  return index < 0 ? 0 : index;
+}
+
 export type ThreatKind = "fire" | "canopy-loss" | "fire-weather";
 
 export interface Site {
